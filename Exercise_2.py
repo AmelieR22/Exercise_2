@@ -143,3 +143,17 @@ m1 = Matrix([[1, 2], [3, 4]])
 m2 = Matrix([[5, 6], [7, 8]])
 m3 = m1 * m2
 print(m3) # Output: [[19, 22], [43, 50]]
+
+#Inheritance
+#I1
+class Vehicle:
+    def drive(self):
+        return "Driving a vehicle"
+
+class Car(Vehicle):
+    def drive(self):
+        return "Driving a car"
+
+class Bicycle(Vehicle):
+    def drive(self):
+        return "Riding a bicycle"
