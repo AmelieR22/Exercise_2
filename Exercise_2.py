@@ -22,3 +22,18 @@ c4 = c1 - c2
 
 print(c3) # 4 + 6j
 print(c4) # -2 - 2j
+
+#2
+class Person:
+    def __init__(self, name, age, gender):
+        self.name = name
+        self.age = age
+        self.gender = gender
+        
+    def __gt__(self, other):
+        return self.age > other.age
+    
+p1 = Person("John", 30, "Male")
+p2 = Person("Jane", 25, "Female")
+
+print(p1 > p2) # True
