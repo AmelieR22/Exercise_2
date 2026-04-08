@@ -51,4 +51,33 @@ class Vector:
 v1 = Vector(1, 2, 3)
 v2 = Vector(3, 2, 1)
 
-print(v1 * v2) # 10
+print(v1 * v2) # 
+
+#5
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+        
+    def __lt__(self, other):
+        return self.radius < other.radius
+        
+    def __le__(self, other):
+        return self.radius <= other.radius
+        
+    def __eq__(self, other):
+        return self.radius == other.radius
+        
+    def __ne__(self, other):
+        return self.radius != other.radius
+        
+    def __gt__(self, other):
+        return self.radius > other.radius
+        
+    def __ge__(self, other):
+        return self.radius >= other.radius
+        
+c1 = Circle(5)
+c2 = Circle(6)
+print(c1 < c2) # Output: True
+print(c1 > c2) # Output: False
+print(c1 == c2) # Output: False
