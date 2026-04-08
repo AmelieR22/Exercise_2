@@ -117,3 +117,29 @@ p2 = Point(2, 2)
 
 print(p1 < p2) # True
 print(p1 == p2) # False
+
+
+#7
+\class Matrix:
+    def __init__(self, matrix):
+        self.matrix = matrix
+        
+    def __mul__(self, other):
+        result = []
+        for i in range(len(self.matrix)):
+            row = []
+            for j in range(len(other.matrix[0])):
+                sum = 0
+                for k in range(len(other.matrix)):
+                    sum += self.matrix[i][k] * other.matrix[k][j]
+                row.append(sum)
+            result.append(row)
+        return Matrix(result)
+        
+    def __str__(self):
+        return str(self.matrix)
+        
+m1 = Matrix([[1, 2], [3, 4]])
+m2 = Matrix([[5, 6], [7, 8]])
+m3 = m1 * m2
+print(m3) # Output: [[19, 22], [43, 50]]
