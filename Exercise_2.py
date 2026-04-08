@@ -37,3 +37,18 @@ p1 = Person("John", 30, "Male")
 p2 = Person("Jane", 25, "Female")
 
 print(p1 > p2) # True
+
+#3
+class Vector:
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+        
+    def __mul__(self, other):
+        return self.x * other.x + self.y * other.y + self.z * other.z
+    
+v1 = Vector(1, 2, 3)
+v2 = Vector(3, 2, 1)
+
+print(v1 * v2) # 10
