@@ -81,3 +81,39 @@ c2 = Circle(6)
 print(c1 < c2) # Output: True
 print(c1 > c2) # Output: False
 print(c1 == c2) # Output: False
+
+
+#6
+import math
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def distance(self):
+        return math.sqrt(self.x**2 + self.y**2)
+
+    def __lt__(self, other):
+        return self.distance() < other.distance()
+
+    def __le__(self, other):
+        return self.distance() <= other.distance()
+
+    def __eq__(self, other):
+        return self.distance() == other.distance()
+
+    def __ne__(self, other):
+        return self.distance() != other.distance()
+
+    def __gt__(self, other):
+        return self.distance() > other.distance()
+
+    def __ge__(self, other):
+        return self.distance() >= other.distance()
+
+p1 = Point(1, 1)
+p2 = Point(2, 2)
+
+print(p1 < p2) # True
+print(p1 == p2) # False
