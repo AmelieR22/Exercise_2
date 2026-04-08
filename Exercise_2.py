@@ -157,3 +157,93 @@ class Car(Vehicle):
 class Bicycle(Vehicle):
     def drive(self):
         return "Riding a bicycle"
+    
+    #I2
+    class Person:
+    def __init__(self, name, age, address):
+        self.name = name
+        self.age = age
+        self.address = address
+    
+    def introduce(self):
+        return "Hi, my name is {} and I am {} years old.".format(self.name, self.age)
+
+class Student(Person):
+    def __init__(self, name, age, address, field_of_study):
+        Person.__init__(self, name, age, address)
+        self.field_of_study = field_of_study
+    
+    def introduce(self):
+        introduction = Person.introduce(self)
+        return "{} I am a student studying {}.".format(introduction, self.field_of_study)
+
+class Employee(Person):
+    def __init__(self, name, age, address, company):
+        Person.__init__(self, name, age, address)
+        self.company = company
+    
+    def introduce(self):
+        introduction = Person.introduce(self)
+        return "{} I work at {}.".format(introduction, self.company)
+
+person = Person("John Doe", 30, "123 Main St.")
+student = Student("Jane Doe", 20, "456 Elm St.", "Computer Science")
+employee = Employee("Jim Smith", 40, "789 Oak St.", "Acme Inc.")
+
+people = [person, student, employee]
+for person in people:
+    print(person.introduce())
+
+# Output:
+# Hi, my name is John Doe and I am 30 years old.
+# Hi, my name is Jane Doe and I am 20 years old. I am a student studying Computer Science.
+# Hi, my name is Jim Smith and I am 40 years old. I work at Acme Inc.
+    
+    #I3
+    class BankAccount:
+    def __init__(self, account_number, balance):
+        self.account_number = account_number
+        self.balance = balance
+        
+    def deposit(self, amount):
+        self.balance += amount
+        
+    def withdraw(self, amount):
+        if self.balance >= amount:
+            self.balance -= amount
+            return True
+        else:
+            return False
+    
+    def transfer(self, destination_account, amount):
+        if self.balance >= amount:
+            self.balance -= amount
+            destination_account.deposit(amount)
+            return True
+        else:
+            return False
+
+class SavingsAccount(BankAccount):
+    def __init__(self, account_number, balance, interest_rate):
+        BankAccount.__init__(self, account_number, balance)
+        self.interest_rate = interest_rate
+        
+    def add_interest(self):
+        interest = self.balance * self.interest_rate
+        self.deposit(interest)
+        
+    def check_balance(self):
+        return self.balance
+
+# create two savings accounts
+savings_account1 = SavingsAccount(account_number="12345", balance=1000, interest_rate=0.05)
+savings_account2 = SavingsAccount(account_number="67890", balance=500, interest_rate=0.03)
+
+# transfer money from one account to another
+if savings_account1.transfer(destination_account=savings_account2, amount=100):
+    print("Transfer successful")
+else:
+    print("Transfer failed")
+
+# check the balance of both accounts
+print("Savings Account 1 Balance:", savings_account1.check_balance())
